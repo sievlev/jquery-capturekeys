@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Capture keys</title>
+
+		<script type="text/javascript" language="javascript" src="../libs/jquery/jquery-1.8.2.js"></script>
+		<script type="text/javascript" language="javascript" src="../dist/jquery.capturekeys.js"></script>
+		<script type="text/javascript" language="javascript">
+			$(function() {
+				function capture_event(event) {
+					event.preventDefault();
+					event.stopPropagation();
+					var key = event.key;
+					switch(event.location) {
+						case 1:
+							key += "_L";
+							break;
+						case 2:
+							key += "_R";
+							break;
+					}
+					var type = event.type;
+					switch(event.type) {
+						case "dom3keydown":
+							type = "DOWN";
+							break;
+						case "dom3keyup":
+							type = "UP";
+							break;
+					}
+					$("#out").append($("<div>", { text: type + " " + key }));
+				}
+
+				$("#in")
+					.capturekeys()
+					.on("dom3keyup dom3keydown", capture_event);
+			});
+		</script>
+	</head>
+	<body>
+		<input id="in">
+		<div id="out"></div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+{
+	"name": "jquery.capturekeys",
+	"title": "Keyboard events simplifier",
+	"description": "This module tries to simplify keyboard events handling across different browsers",
+	"homepage": "https://github.com/sievlev/jquery-capturekeys",
+	"author": {
+		"name": "Stanislav Ievlev",
+		"email": "stanislav.ievlev@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/sievlev/jquery-capturekeys.git"
+	},
+	"scripts": {
+		"test": "grunt qunit"
+	},
+	"bugs": {
+		"url": "https://github.com/sievlev/jquery-capturekeys/issues"
+	},
+	"licenses": [{
+		"type": "MIT",
+		"url": "https://github.com/sievlev/jquery-capturekeys/blob/master/LICENSE.txt"
+	}],
+	"devDependencies": {
+		"grunt": "~0.3.16"
+	}
+}
