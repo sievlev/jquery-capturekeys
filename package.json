@@ -3,6 +3,7 @@
 	"title": "Keyboard events simplifier",
 	"description": "This module tries to simplify keyboard events handling across different browsers",
 	"homepage": "https://github.com/sievlev/jquery-capturekeys",
+	"version": "0.0.1",
 	"author": {
 		"name": "Stanislav Ievlev",
 		"email": "stanislav.ievlev@gmail.com"
