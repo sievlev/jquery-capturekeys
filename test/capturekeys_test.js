@@ -122,7 +122,7 @@ test("modifier, missing location", function() {
 		[{type: "dom3keydown", key: "Alt", location: 1}]);
 });
 
-test("opera event names", function() {
+test("opera, wrong event names", function() {
 	var opera_names = ["ContextMenu", "ScrollLock", "Subtract", "Add", "Mul", "Divide"];
 	var normal_names = ["Apps", "Scroll", "-", "+", "*", "/"];
 
@@ -133,6 +133,12 @@ test("opera event names", function() {
 	eventsEquals(
 		[dom3_event("keydown", "Window", 1)],
 		[{type: "dom3keydown", key: "Win", location: 1}]);
+});
+
+test("opera, wrong location", function() {
+	eventsEquals(
+		[dom3_event("keydown", "CapsLock", 1)],
+		[{type: "dom3keydown", key: "CapsLock", location: 0}]);
 });
 
 module("Webkit");

@@ -46,6 +46,8 @@ function event_with_location(event, key, location) {
 
 	if (!location && ($.inArray(key, LOCATION_KEYS) >= 0)) {
 		location = 1;
+	} else if (location && ($.inArray(key, LOCATION_KEYS) === -1)) {
+		location = 0;
 	}
 
 	event.key = key;
