@@ -8,9 +8,9 @@ function base_event(type, symbol, location) {
 	return { type: type, which: code, keyCode: code };
 }
 
-function dom3_event(type, symbol, location) {
+function dom3_event(type, symbol, location, char) {
 	return $.Event(
-		$.extend(base_event(type, symbol), { key: symbol, location: location || 0 }));
+		$.extend(base_event(type, symbol), { key: symbol, char: char, location: location || 0 }));
 }
 
 function webkit_event(type, symbol, location) {
@@ -122,9 +122,9 @@ test("modifier, missing location", function() {
 		[{type: "dom3keydown", key: "Alt", location: 1}]);
 });
 
-test("opera, wrong event names", function() {
-	var opera_names = ["ContextMenu", "ScrollLock", "Subtract", "Add", "Mul", "Divide"];
-	var normal_names = ["Apps", "Scroll", "-", "+", "*", "/"];
+test("opera, wrong special keys", function() {
+	var opera_names = ["ContextMenu", "ScrollLock"];
+	var normal_names = ["Apps", "Scroll"];
 
 	eventsEquals(
 		$.map(opera_names, function(value) { return dom3_event("keydown", value); }),
@@ -133,6 +133,19 @@ test("opera, wrong event names", function() {
 	eventsEquals(
 		[dom3_event("keydown", "Window", 1)],
 		[{type: "dom3keydown", key: "Win", location: 1}]);
+});
+
+test("opera, wrong numeric keys", function() {
+	var opera_numerics = [
+		{ key: "Subtract", char: "-" },
+		{ key: "Add", char: "=" },
+		{ key: "Mul", char: "*" },
+		{ key: "Divide", char: "/" }
+	];
+
+	eventsEquals(
+		$.map(opera_numerics, function(cap) { return dom3_event("keydown", cap.key, 0, cap.char); }),
+		$.map(opera_numerics, function(cap) { return {type: "dom3keydown", key: cap.char, location: 0}; }));
 });
 
 test("opera, wrong location", function() {
