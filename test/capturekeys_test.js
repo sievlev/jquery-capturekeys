@@ -135,11 +135,12 @@ test("opera, wrong special keys", function() {
 		[{type: "dom3keydown", key: "Win", location: 1}]);
 });
 
-test("opera, wrong numeric keys", function() {
+test("opera&firefox, wrong numeric keys", function() {
 	var opera_numerics = [
 		{ key: "Subtract", char: "-" },
-		{ key: "Add", char: "=" },
+		{ key: "Add", char: "+" },
 		{ key: "Mul", char: "*" },
+		{ key: "Multiply", char: "*" },
 		{ key: "Divide", char: "/" }
 	];
 

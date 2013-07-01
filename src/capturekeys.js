@@ -16,6 +16,7 @@ var DOM3_NUMERIC_KEYS = {
 	"Subtract": "-",
 	"Add": "+",
 	"Mul": "*",
+	"Multiply": "*",
 	"Divide": "/"
 };
 
@@ -70,7 +71,7 @@ function is_dom3_special(event) {
 function dom3_key(event) {
 	var key = event.originalEvent.key;
 	if (key in DOM3_NUMERIC_KEYS) {
-		return event.originalEvent.char;
+		return DOM3_NUMERIC_KEYS[key];
 	} else if (key in DOM3_SPECIAL_KEYS) {
 		return DOM3_SPECIAL_KEYS[key];
 	}
