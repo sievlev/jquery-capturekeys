@@ -59,7 +59,7 @@ function event_with_location(event, key, location) {
 }
 
 function is_dom3(event) {
-	return ("key" in event.originalEvent);
+	return ("key" in event.originalEvent && event.originalEvent.key !== "MozPrintableKey");
 }
 
 function is_dom3_special(event) {

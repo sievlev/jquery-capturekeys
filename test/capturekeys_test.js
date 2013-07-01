@@ -154,6 +154,12 @@ test("opera, wrong location", function() {
 		[{type: "dom3keydown", key: "CapsLock", location: 0}]);
 });
 
+test("firefox, wrong printable keys", function() {
+	eventsEquals(
+		[dom3_event("keydown", "MozPrintableKey", 0), dom2_event("keypress", "k")],
+		[{type: "dom3keydown", key: "k", location: 0}, {type: "dom3keyup", key: "k", location: 0}]);
+});
+
 module("Webkit");
 
 test("modifier, no location", function() {
